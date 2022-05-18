@@ -3,7 +3,7 @@
 -Este projeto tem como intúito ajudar a ampliar minhas Habilidades
 
 ## Tecnologias Ultilizadas ⚛🔥
-<br/>
+
  ### ReactJS
  ### Typescript
  ### Scss
