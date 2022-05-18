@@ -16,10 +16,4 @@
  # Está em Desenvolvimento...
  ### Fique a vontade para olhar 😄
 
-## Imagens
-
-<div align = "center">
-  <img src = "https://user-images.githubusercontent.com/https://cdn.discordapp.com/attachments/970640974097305610/976576075519914024/unknown.png" width = "800px"/>
-<div/>
-
 
