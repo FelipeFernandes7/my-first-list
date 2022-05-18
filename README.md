@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Listas Mazza
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Este projeto tem como intúito ajudar a ampliar minhas Habilidades
 
 ## Available Scripts
 
