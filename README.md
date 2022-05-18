@@ -19,7 +19,7 @@
 ## Imagens
 
 <div align = "center">
-  <img src = "https://user-images.githubusercontent.com/71227873/143922264-84b8094b-5d38-4aa5-ace3-2663ca22ebbe.png" width = "800px"/>
+  <img src = "https://user-images.githubusercontent.com/https://cdn.discordapp.com/attachments/970640974097305610/976576075519914024/unknown.png" width = "800px"/>
 <div/>
 
 
