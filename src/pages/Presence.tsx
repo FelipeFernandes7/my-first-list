@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import { Screen } from "../components/Screen";
 
 import Logo from "../assets/logo.png";
 import "../scss/presence.scss";
 import Swal from "sweetalert2";
+import { addUsers } from "../controller/usersController";
+import api from "../Services/api";
+
 
 type UserType = {
   name: string;
@@ -12,11 +15,13 @@ type UserType = {
 };
 export function Presence() {
   const [nameUser, setNameuser] = useState("");
+  const [submit, setSubmit] = useState()
   const [user, setUser] = useState<UserType[]>([]);
 
   async function handleAddUser() {
     if (nameUser) {
       const newUser = {
+        status:1,
         name: nameUser,
         time: new Date().toLocaleTimeString("pt-br", {
           hour: "2-digit",
@@ -34,6 +39,7 @@ export function Presence() {
       });
     }
   }
+
   return (
     <div className="container">
       <header>
@@ -51,9 +57,11 @@ export function Presence() {
           value={nameUser}
         />
         <button className="btn" onClick={handleAddUser}>
-          Adcionar
+          Adicionar
         </button>
-        <Screen />
+        {
+          <Screen />
+        }
         {user.map((user) => (
           <Card name={user.name} time={user.time} />
         ))}

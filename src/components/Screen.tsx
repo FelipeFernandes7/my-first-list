@@ -1,12 +1,21 @@
 import Modal from "react-modal";
 import { useState } from "react";
+import { getUsers } from "../controller/usersController";
 
+import On from '../assets/online.png'
+import Off from '../assets/off.png'
 import "../scss/screen.scss";
 
 export function Screen() {
+
+  const [list, setList] = useState<any>([]);
+  
   Modal.setAppElement("#root");
   const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
+  
+  async function openModal() {
+    const listData = await getUsers()
+    setList(listData);
     setIsOpen(true);
   }
   function closeModal() {
@@ -14,49 +23,32 @@ export function Screen() {
   }
   return (
     <div className="screen">
-      
-      {!modalIsOpen && <button className="btnOpen" onClick={openModal}>Mostrar Lista</button>}
-
+      {!modalIsOpen && (
+        <button className="btnOpen" onClick={openModal}>
+          Mostrar Lista
+        </button>
+      )}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
         overlayClassName="modal-overlay"
-        className="modal-content">
-
+        className="modal-content"
+      >
         <div className="list">
-          <div className="listUsers">
-            <strong>Luiz Felipe</strong>
-            <small>16:51:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Rodrigo Silva</strong>
-            <small>14:30:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Juliana Silvestre</strong>
-            <small>17:51:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Ronaldo Santos</strong>
-            <small>18:01:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Paula Fernanda</strong>
-            <small>12:45:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Angélica Zambrowski</strong>
-            <small>11:40:00</small>
-          </div>
-          <div className="listUsers">
-            <strong>Pedro Neves</strong>
-            <small>22:05:40</small>
-          </div>
-
+          {list.map((user:any) => (
+            <div key={user.id} className="listUsers">
+              <strong>{user.nome}</strong>
+              <small>{user.status === 1 ? (<img className="on" src={On} height={12} width={12} alt="Ativo"/>) : (<img className="off" src={Off} height={12} width={12} alt="Inativo"/>)}</small>
+            </div>
+          ))}
         </div>
         <div className="button">
-        {modalIsOpen && <button className="btnClose" onClick={closeModal}>Fechar Lista</button> }
+          {modalIsOpen && (
+            <button className="btnClose" onClick={closeModal}>
+              Fechar Lista
+            </button>
+          )}
         </div>
       </Modal>
     </div>

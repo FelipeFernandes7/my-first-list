@@ -66,15 +66,23 @@
   }
   .list {
     height: 400px;
-    overflow-y: scroll;
+    overflow-y:scroll;
+    overflow-x: hidden;
     display: flex;
     width: 100%;
     flex-direction: column;
     padding-left: 10px;
     min-width: 330px;
-    overflow-x: hidden;
   }
    
+  .on{
+    filter: drop-shadow(#00FF7F 0px 0px 3px );
+    cursor: pointer;
+  }
+  .off{
+    filter: drop-shadow(#DC143C 0px 0px 3px );
+    cursor: pointer;
+  }
 
 .listUsers {
   margin-top: 10px;
@@ -92,13 +100,13 @@
   min-width: 300px;
 }
 ::-webkit-scrollbar{
-  width: 3px;
+  width: 2px;
  background:#fff;
  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  width: 3px;
-  border-radius: 5px;
+  width: 2px;
+  border-radius: 3px;
   background-color:#dc143c;
 }
 }

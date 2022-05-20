@@ -8,7 +8,6 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Presence/>} />
-      <Route path="/modal" element={<Screen/>} />
       </Routes>
       </BrowserRouter>
     </div>
