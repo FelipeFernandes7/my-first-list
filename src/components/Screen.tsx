@@ -1,26 +1,14 @@
 import Modal from "react-modal";
-import { useState } from "react";
-import { getUsers } from "../controller/usersController";
+import { ModalContext } from "../context/modalContext";
 
-import On from '../assets/online.png'
-import Off from '../assets/off.png'
+import On from "../assets/online.png";
+import Off from "../assets/off.png";
 import "../scss/screen.scss";
 
 export function Screen() {
-
-  const [list, setList] = useState<any>([]);
-  
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = useState(false);
-  
-  async function openModal() {
-    const listData = await getUsers()
-    setList(listData);
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const { openModal, modalIsOpen, closeModal, list } = ModalContext();
+
   return (
     <div className="screen">
       {!modalIsOpen && (
@@ -36,10 +24,28 @@ export function Screen() {
         className="modal-content"
       >
         <div className="list">
-          {list.map((user:any) => (
+          {list.map((user: any) => (
             <div key={user.id} className="listUsers">
               <strong>{user.nome}</strong>
-              <small>{user.status === 1 ? (<img className="on" src={On} height={12} width={12} alt="Ativo"/>) : (<img className="off" src={Off} height={12} width={12} alt="Inativo"/>)}</small>
+              <small>
+                {user.status === 1 ? (
+                  <img
+                    className="on"
+                    src={On}
+                    height={12}
+                    width={12}
+                    alt="Ativo"
+                  />
+                ) : (
+                  <img
+                    className="off"
+                    src={Off}
+                    height={12}
+                    width={12}
+                    alt="Inativo"
+                  />
+                )}
+              </small>
             </div>
           ))}
         </div>
@@ -54,4 +60,3 @@ export function Screen() {
     </div>
   );
 }
-export default Screen;
