@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 
 import Swal from "sweetalert2";
 import { saveUser } from "../Services/user";
-
 type UserType = {
   name: string;
   time: string;
@@ -24,7 +23,7 @@ export function AnyContext() {
           second: "2-digit",
         }),
       };
-      await saveUser(newUser.name, newUser.status);
+     await saveUser(newUser.name, newUser.status);
       setUser((state) => [...state, newUser]);
     } else {
       Swal.fire({
@@ -35,6 +34,7 @@ export function AnyContext() {
       });
     }
   }
+
   return {
     user,
     handleAddUser,
