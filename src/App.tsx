@@ -1,20 +1,10 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Presence from "./pages/Presence";
-import { AddProvider } from "./context/addUserContext";
+import { createBrowserRouter } from "react-router-dom";
+import { Home } from "./pages/home";
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-      <AddProvider.Provider
-      value={[]}>
-      <Routes>
-      <Route path="/" element={<Presence/>} />
-      </Routes>
-      </AddProvider.Provider>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
+export { router };

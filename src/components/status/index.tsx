@@ -1,18 +1,23 @@
-import { STATUS } from "../Services/user";
 import On from "../assets/online.png";
 import Off from "../assets/off.png";
 import Warning from "../assets/alert.png";
 import "../scss/screen.scss";
 
-type Props = {
-  status: STATUS;
+export type Status = {
+  completed: boolean;
+  processing: boolean;
+  incomplete: boolean;
 };
 
-export function Status(props: Props) {
-  if (props.status === STATUS.CONCLUIDO) {
+type Props = {
+  status: Status;
+};
+
+export function Status({ status }: Props) {
+  if (status.completed) {
     return <img className="on" src={On} height={12} width={12} alt="Ativo" />;
   }
-  if (props.status === STATUS.PROCESSANDO) {
+  if (status.completed) {
     return (
       <img
         className="warning"
