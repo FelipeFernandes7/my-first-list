@@ -3,6 +3,7 @@ import { Card } from "../../components/card";
 
 import { Status } from "../../components/status";
 import { addNewUser, getUsers } from "../../controller/api";
+import { FaPlus } from "react-icons/fa6";
 
 type UserProps = {
   name: string;
@@ -45,27 +46,34 @@ export function Home() {
         Pessoas que usam Serviços do Felipe
       </h1>
       <form className="w-full flex flex-col justify-center items-center px-6 md:max-w-[500px]">
-        <input
-          type="text"
-          className="w-full text-white text-sm border-[1px] border-slate-600 bg-neutral-900 rounded-xl h-12 px-2 my-4"
-          placeholder="Digite um empregado"
-          value={user.name}
-          onChange={(e) =>
-            setUser((prev) => ({ ...prev, name: e.target.value }))
-          }
-        />
-        <button
-          className="w-full rounded-xl bg-red-700 h-11 mt-2 mb-6 active:scale-95 hover:bg-red-800 transition-all duration-300"
-          onClick={handleAddUser}
-        >
-          Adicionar
-        </button>
-        <section className="w-full flex flex-col items-center gap-2 mb-6">
-          {data.map((user, key) => (
-            <Card key={key} name={user.name} time={new Date()} />
-          ))}
-        </section>
+        <div className="w-full flex items-center gap-2 my-4">
+          <input
+            type="text"
+            className="w-full text-white text-sm border-[1px] border-slate-600 bg-neutral-900 rounded-xl p-3 px-2 outline-none"
+            placeholder="Digite um empregado"
+            value={user.name}
+            onChange={(e) =>
+              setUser((prev) => ({ ...prev, name: e.target.value }))
+            }
+          />
+          <button
+            className="rounded-xl bg-red-700 p-3 active:scale-95 hover:bg-red-800 transition-all duration-300 disabled:opacity-75"
+            onClick={handleAddUser}
+            disabled={!user.name}
+          >
+            <FaPlus />
+          </button>
+        </div>
       </form>
+      <div className="w-full flex justify-between items-center px-6 md:max-w-[500px] my-2 text-red-600">
+        <span className="text-sm underline">Nomes</span>
+        <span className="text-sm underline">Hora(s)</span>
+      </div>
+      <section className="w-full flex flex-col items-center gap-2 mb-6 px-6 md:max-w-[500px]">
+        {data.map((user, key) => (
+          <Card key={key} name={user.name} time={new Date()} />
+        ))}
+      </section>
     </div>
   );
 }
